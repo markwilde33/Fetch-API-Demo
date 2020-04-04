@@ -3,27 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <title>Fetch API Demo</title>
 </head>
 <body>
-  <button id="getText">Get Text</button>
-  <button id="getUsers">Get JSON</button>
-  <button id="getPosts">Get API Data</button>
-  <hr>
-  <div id="outputText"></div>
-  <div id="outputUsers"></div>
-  <div id="outputPosts"></div>
-  <form  id="addPost">
-    <div>
-      <input type="text" id="title" placeholder="Title">
+  <div class="container">
+    <h1 class="display-4 mb-4">Fetch API Demo</h1>
+    <div class="d-flex">
+      <button class="btn btn-primary mr-4" id="getText">Get Text</button>
+      <button class="btn btn-success mr-4"id="getUsers">Get JSON</button>
+      <button class="btn btn-warning mr-4" id="getPosts">Get API Data</button>
     </div>
-    <div>
-      <textarea id="body" placeholder="Body">
-      </textarea>
+    <hr>
+    <div id="outputText"></div>
+    <div id="outputUsers"></div>
+    <div id="outputPosts"></div>
+    <form  id="addPost">
+      <div class="form-group">
+        <input class="form-control" type="text" id="title" placeholder="Title">
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" id="body" placeholder="Body">
+        </textarea>
+      </div>
+      <input class="btn btn-secondary" type="submit" value="Submit">
+    </form>
   </div>
-  <input type="submit" value="Submit">
-  </form>
-
   <script src="api.js"></script>
 </body>
 </html>
+

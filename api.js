@@ -24,14 +24,13 @@ getUsers.addEventListener('click', () => {
   fetch('users.json')
   .then(res =>  res.json())
   .then(data => {
-   users = `<h2>Users</h2>`;
+   users = `<h2 class="mb-4">Users</h2>`;
    data.forEach(user => {
-    users += `<ul>
-     <li>ID: ${user.id}</li>
-     <li>Name: ${user.name}</li>
-     <li>Email: ${user.email}</li>
-     </ul>
-     `;
+    users += `<ul class="list-group mb-3">
+     <li class="list-group-item "><strong>ID:</strong> ${user.id}</li>
+     <li class="list-group-item"><strong>Name:</strong> ${user.name}</li>
+     <li class="list-group-item"><strong>Email:</strong> ${user.email}</li>
+     </ul>`;
    });
    document.getElementById('outputUsers').innerHTML = users;
   })
@@ -43,10 +42,10 @@ getPosts.addEventListener('click', () => {
   fetch('https://jsonplaceholder.typicode.com/posts')
   .then(res =>  res.json())
   .then(data => {
-   posts = `<h2>Posts</h2>`;
+   posts = `<h2 class="mb-4">Posts</h2>`;
    data.forEach(post => {
     posts += `
-    <div>
+    <div class="card card-body mb-3">
       <h3>${post.title}</h3>
       <p>${post.body}</p>
     </div>
