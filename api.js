@@ -5,6 +5,9 @@ let getUsers = document.getElementById('getUsers')
 let outputUsers =  document.getElementById('outputUsers');
 let getPosts = document.getElementById('getPosts')
 let outputPosts =  document.getElementById('outputPosts');
+let addPost = document.getElementById('addPost')
+
+
 
 //fetch sample txt, format result with .text() method, receive the data and output it to the browser, catch any errors
 getText.addEventListener('click', () => {
@@ -53,3 +56,22 @@ getPosts.addEventListener('click', () => {
   })
   .catch(err => console.log(err))
 });
+
+
+// function to make a post request to the API
+addPost.addEventListener('submit', e => {
+// get the elements that we want to inject some data into
+let title = document.getElementById('title').value;
+let body = document.getElementById('body').value;
+  e.preventDefault();
+  fetch('https://jsonplaceholder.typicode.com/posts', {
+    method:'POST',
+    headers: {
+      'Accept': 'application/json, text/plain, */*',
+      'Content-type': 'application/json'
+    },
+    body:JSON.stringify({title:title, body:body})
+  })
+  .then(res =>  res.json())
+  .then(data => console.log(data))
+   })
