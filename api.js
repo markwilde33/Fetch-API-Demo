@@ -1,20 +1,55 @@
+// get elements by their id
 let getText = document.getElementById('getText')
+let outputText =  document.getElementById('outputText');
+let getUsers = document.getElementById('getUsers')
+let outputUsers =  document.getElementById('outputUsers');
+let getPosts = document.getElementById('getPosts')
+let outputPosts =  document.getElementById('outputPosts');
 
-let output =  document.getElementById('output');
-
-// function get() {
-//   fetch('sample.txt')
-//   .then(res =>  res.text())
-//   .then(data => {
-//    output.innerHTML = data;
-//   })
-// }
-
+//fetch sample txt, format result with .text() method, receive the data and output it to the browser, catch any errors
 getText.addEventListener('click', () => {
   fetch('sample.txt')
   .then(res =>  res.text())
   .then(data => {
-   output.innerHTML = data;
+   outputText.innerHTML = data;
+  })
+  .catch(err => console.log(err))
+});
+
+//fetch json file, format result with .json() method, receive the data and cycle through each item and put it in a list, output it to the browser, catch any errors
+getUsers.addEventListener('click', () => {
+  fetch('users.json')
+  .then(res =>  res.json())
+  .then(data => {
+   users = `<h2>Users</h2>`;
+   data.forEach(user => {
+    users += `<ul>
+     <li>ID: ${user.id}</li>
+     <li>Name: ${user.name}</li>
+     <li>Email: ${user.email}</li>
+     </ul>
+     `;
+   });
+   document.getElementById('outputUsers').innerHTML = users;
+  })
+  .catch(err => console.log(err))
+});
+
+//fetch api, format result with .json() method, receive the data and cycle through each item and put it in a div, output it to the browser, catch any errors
+getPosts.addEventListener('click', () => {
+  fetch('https://jsonplaceholder.typicode.com/posts')
+  .then(res =>  res.json())
+  .then(data => {
+   posts = `<h2>Posts</h2>`;
+   data.forEach(post => {
+    posts += `
+    <div>
+      <h3>${post.title}</h3>
+      <p>${post.body}</p>
+    </div>
+     `;
+   });
+   document.getElementById('outputPosts').innerHTML = posts;
   })
   .catch(err => console.log(err))
 });
